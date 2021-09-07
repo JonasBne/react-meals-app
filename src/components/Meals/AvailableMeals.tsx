@@ -1,15 +1,7 @@
 import React from "react";
 
 import classes from "./AvailableMeals.module.css"
-
-interface Meal {
-    id: string,
-    name: string,
-    description: string,
-    price: number
-}
-
-
+import MealItem from "../Meals/MealItem/MealItem";
 
 const DUMMY_MEALS = [
     {
@@ -22,7 +14,7 @@ const DUMMY_MEALS = [
         id: 'm2',
         name: 'Schnitzel',
         description: 'A german specialty!',
-        price: 16.5,
+        price: 16.50,
     },
     {
         id: 'm3',
@@ -39,14 +31,10 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals =  () => {
-    const mealsList = DUMMY_MEALS.map((item: Meal) => {
-        return <li key={item.id}>{item.name}</li>
-    })
-
     return (
         <section>
             <ul className={classes.mealsList}>
-                {mealsList}
+                <MealItem meals={DUMMY_MEALS} />
             </ul>
         </section>
     )

@@ -1,10 +1,8 @@
 .mealsList {
     border-radius: 1rem;
-    border: 2px solid seagreen;
+    border: 2px solid #237A57;
     width: 80%;
     margin: 1rem auto;
     padding: 1rem;
-    background-color: seagreen;
-    color: white;
     list-style: none;
 }
