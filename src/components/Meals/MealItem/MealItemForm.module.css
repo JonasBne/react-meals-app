@@ -1,0 +1,27 @@
+.mealItemForm {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.button {
+    cursor: pointer;
+    background: linear-gradient(to right, #237A57, #093028);
+    color: white;
+    border: 1px solid black;
+    padding: 0.25rem 2rem;
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+.mealItem label {
+    color: red;
+    border: 1px solid black;
+    margin-right: 1rem;
+    height: 2rem;
+}
+
+.mealItem input {
+    width: 20%;
+    background-color: blue;
+    height: 2rem;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 
 import classes from "./MealItem.module.css"
+import MealItemForm from "./MealItemForm";
 
 interface Meal {
     id: string,
@@ -25,6 +26,7 @@ const MealItem = (props: IProps) => {
                                 <p className={classes.price}>€{item.price}</p>
                            </div>
                            <div>
+                               <MealItemForm/>
                            </div>
                     </li>})
             }
