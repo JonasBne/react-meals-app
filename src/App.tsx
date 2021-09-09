@@ -3,7 +3,8 @@ import React, {useState} from "react";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
-import HeaderLogin from "./components/Layout/HeaderLogin";
+import HeaderLogin from "../src/components/Login/HeaderLogin";
+import Login from "./components/Login/Login";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
   return (
       <React.Fragment>
           <HeaderLogin />
+          <Login />
       </React.Fragment>
   )
 
