@@ -10,7 +10,6 @@ const HeaderLogin = () => {
                 <h1>ReactMeals</h1>
                 <div>
                     <button className={classes.button}>Log in</button>
-                    <button className={classes.button}>Sign up</button>
                 </div>
             </header>
         </React.Fragment>

@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./Header.module.css";
 
-import mealsImage from "../../assets/main-image.jpg";
+import mealsImage from "../../../assets/main-image.jpg";
 import HeaderCartButton from "./HeaderCartButton";
 
 const Header = (props: any) => {

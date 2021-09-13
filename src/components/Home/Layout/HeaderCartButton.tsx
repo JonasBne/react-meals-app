@@ -1,7 +1,7 @@
 import React from "react";
 
 import classes from "./HeaderCartButton.module.css";
-import CartIcon from "../../components/Cart/CartIcon";
+import CartIcon from "../../Home/Cart/CartIcon";
 
 const HeaderCartButton = (props: any) => {
 
