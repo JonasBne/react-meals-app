@@ -2,21 +2,25 @@ import React from "react";
 
 import classes from "./Header.module.css";
 
-import mealsImage from "../../../assets/main-image.jpg";
 import HeaderCartButton from "./HeaderCartButton";
 
-const Header = (props: any) => {
+interface IProps {
+    onShowCart: () => void;
+    onLogout: () => void;
+}
+
+const Header = (props: IProps) => {
+
 
     return (
-        <React.Fragment>
-            <header className={classes.header}>
-                <h1>ReactMeals</h1>
-                <HeaderCartButton onClick={props.onShowCart}/>
-            </header>
-            <div className={classes["header-image"]}>
-                <img src={mealsImage} alt={"A table full of delicious ingredients"}/>
-            </div>
-        </React.Fragment>
+        <header className={classes.header}>
+            <h1 className={classes.title}>Yummy</h1>
+            <span>
+                <HeaderCartButton onClick={props.onShowCart} className={classes.cart}/>
+                <button type={"button"} onClick={props.onLogout}>Log out</button>
+            </span>
+        </header>
+
     )
 }
 

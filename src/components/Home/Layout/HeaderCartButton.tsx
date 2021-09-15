@@ -1,15 +1,17 @@
 import React from "react";
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+
+
 import classes from "./HeaderCartButton.module.css";
-import CartIcon from "../../Home/Cart/CartIcon";
+
 
 const HeaderCartButton = (props: any) => {
 
     return (
         <button className={classes.button} onClick={props.onClick}>
-            <span className={classes.icon}>
-                <CartIcon />
-            </span>
+            <FontAwesomeIcon icon={faShoppingCart} className={classes.icon} />
             <span>Your Cart</span>
             <span className={classes.badge}>3</span>
         </button>

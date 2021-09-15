@@ -61,17 +61,20 @@ function App() {
   }
 
   return (
-<React.Fragment>
+<AuthContext.Provider value={{
+    isLoggedIn: isLoggedIn
+}}>
     { !isLoggedIn && <HeaderLandingPage />}
     { !isLoggedIn && showSignInForm && <Login onSwitchToSignUp={showSignUp} onLogin={loginHandler}/>}
     { !isLoggedIn && showSignUpForm && <Register onSwitchToSignIn={showSignIn}/>}
-    { isLoggedIn && <Header onShowCart={showCartHandler} />}
+
+    { isLoggedIn && <Header onShowCart={showCartHandler} onLogout={logoutHandler} />}
     { isLoggedIn && showCart && <Cart onHideCart={hideCartHandler} />}
     <main>
     {isLoggedIn && <Meals />}
 
     </main>
-</React.Fragment>
+</AuthContext.Provider>
 
 
   )
