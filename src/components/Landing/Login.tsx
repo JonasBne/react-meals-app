@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useReducer, useState} from "react";
 
-import classes from "./SignInBox.module.css";
+import classes from "./Login.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook} from "@fortawesome/free-brands-svg-icons";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons";
@@ -8,6 +8,7 @@ import {faApple} from "@fortawesome/free-brands-svg-icons";
 
 interface IProps {
     onSwitchToSignUp: () => void;
+    onLogin: (state: any) => void;
 }
 
 interface State {
@@ -53,7 +54,7 @@ const formReducer = (state: State, action: Action) => {
 };
 
 
-const SignInBox = (props: IProps) => {
+const Login = (props: IProps) => {
     const [formState, dispatchForm] = useReducer(formReducer, {value: "", emailIsValid: undefined, passwordIsValid: undefined});
 
     const [formIsValid, setFormIsValid] = useState(false);
@@ -92,6 +93,11 @@ const SignInBox = (props: IProps) => {
         props.onSwitchToSignUp();
     }
 
+    function submitHandler (ev: React.MouseEvent) {
+        ev.preventDefault();
+        props.onLogin(formState)
+    }
+
     return (
             <form className={[classes["sign-in-container"], classes["form-container"]].join(' ')}>
                 <h1>Sign in</h1>
@@ -104,9 +110,9 @@ const SignInBox = (props: IProps) => {
                 <input className={`${formState.emailIsValid === false ? classes["input-invalid"] : ''}`} type="email" placeholder="Email" onChange={emailChangeHandler} onBlur={validateEmailHandler}/>
                 <input className={`${formState.passwordIsValid === false ? classes["input-invalid"] : ''}`} type="password" placeholder="Password" onChange={passwordChangeHandler} onBlur={validatePasswordHandler}/>
                 <a onClick={switchToSignUp}>Don't have an account? Sign up here!</a>
-                <button type={"submit"} className={classes["button-action"]} disabled={!formIsValid}>Sign In</button>
+                <button type={"submit"} className={classes["button-action"]} onClick={submitHandler}>Sign In</button>
             </form>
     )
 }
 
-export default SignInBox;
+export default Login;

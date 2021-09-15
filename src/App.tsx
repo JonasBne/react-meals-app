@@ -1,18 +1,23 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import Header from "./components/Home/Layout/Header";
 import Meals from "./components/Home/Meals/Meals";
 import Cart from "./components/Home/Cart/Cart";
 import HeaderLandingPage from "./components/Landing/HeaderLandingPage";
-import SignInBox from "./components/Landing/SignInBox";
-import SignUpBox from "./components/Landing/SignUpBox";
+import Login from "./components/Landing/Login";
+import Register from "./components/Landing/Register";
+import AuthContext from "./store/auth-context";
 
 
 
 
 function App() {
+    //todo: context api to work with login
+
     const [showSignInForm, setShowSignInForm] = useState(true);
     const [showSignUpForm, setShowSignUpForm] = useState(false);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     function showSignUp () {
         setShowSignInForm(false);
@@ -22,6 +27,26 @@ function App() {
     function showSignIn () {
         setShowSignInForm(true);
         setShowSignUpForm(false);
+    }
+
+    useEffect(() => {
+        const storedUserAuthentication = localStorage.getItem("isLoggedIn");
+
+        if (storedUserAuthentication === "1") {
+            setIsLoggedIn(true);
+        }
+    })
+
+    function loginHandler (formState: any) {
+        if (formState) {
+            localStorage.setItem("isLoggedIn", "1");
+            setIsLoggedIn(true);
+        }
+    }
+
+    function logoutHandler () {
+        localStorage.removeItem("isLoggedIn");
+        setIsLoggedIn(false);
     }
 
 
@@ -36,11 +61,19 @@ function App() {
   }
 
   return (
-      <React.Fragment>
-          <HeaderLandingPage />
-          { showSignInForm && <SignInBox onSwitchToSignUp={showSignUp} />}
-          { showSignUpForm && <SignUpBox onSwitchToSignIn={showSignIn}/>}
-      </React.Fragment>
+<React.Fragment>
+    { !isLoggedIn && <HeaderLandingPage />}
+    { !isLoggedIn && showSignInForm && <Login onSwitchToSignUp={showSignUp} onLogin={loginHandler}/>}
+    { !isLoggedIn && showSignUpForm && <Register onSwitchToSignIn={showSignIn}/>}
+    { isLoggedIn && <Header onShowCart={showCartHandler} />}
+    { isLoggedIn && showCart && <Cart onHideCart={hideCartHandler} />}
+    <main>
+    {isLoggedIn && <Meals />}
+
+    </main>
+</React.Fragment>
+
+
   )
 /*    return (
         <React.Fragment>
