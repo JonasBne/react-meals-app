@@ -52,6 +52,11 @@ input {
     width: 100%;
 }
 
+.input-invalid {
+    border-color: red;
+    background: #fbdada;
+}
+
 a {
     color: #333;
     font-size: 14px;

@@ -3,11 +3,9 @@ import React, {useState} from "react";
 import Header from "./components/Home/Layout/Header";
 import Meals from "./components/Home/Meals/Meals";
 import Cart from "./components/Home/Cart/Cart";
-import HeaderLogin from "../src/components/Login/HeaderLogin";
-import Login from "./components/Login/Login";
 import HeaderLandingPage from "./components/Landing/HeaderLandingPage";
-import SignInForm from "../src/components/Landing/SignInForm";
-import SignUpForm from "./components/Landing/SignUpForm";
+import SignInBox from "./components/Landing/SignInBox";
+import SignUpBox from "./components/Landing/SignUpBox";
 
 
 
@@ -40,27 +38,19 @@ function App() {
   return (
       <React.Fragment>
           <HeaderLandingPage />
-          { showSignInForm && <SignInForm onSwitchToSignUp={showSignUp} />}
-          { showSignUpForm && <SignUpForm onSwitchToSignIn={showSignIn}/>}
+          { showSignInForm && <SignInBox onSwitchToSignUp={showSignUp} />}
+          { showSignUpForm && <SignUpBox onSwitchToSignIn={showSignIn}/>}
       </React.Fragment>
   )
-
-  // return (
-  //     <React.Fragment>
-  //         <HeaderLogin />
-  //         <Login onLogin={isLoggedInHandler} />
-  //     </React.Fragment>
-  // )
-
-/*  return (
-      <React.Fragment>
-          <Header onShowCart={showCartHandler} />
-          {showCart ? <Cart onHideCart={hideCartHandler} /> : null}
-          <main>
-              <Meals />
-          </main>
-      </React.Fragment>
-  );*/
+/*    return (
+        <React.Fragment>
+            <Header onShowCart={showCartHandler} />
+            {showCart ? <Cart onHideCart={hideCartHandler} /> : null}
+            <main>
+                <Meals />
+            </main>
+        </React.Fragment>
+    );*/
 }
 
 export default App;

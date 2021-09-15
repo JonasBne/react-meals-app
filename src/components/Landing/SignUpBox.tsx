@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useReducer} from "react";
 
-import classes from "./SignUpForm.module.css";
+import classes from "./SignUpBox.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook} from "@fortawesome/free-brands-svg-icons";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons";
@@ -10,8 +10,9 @@ interface IProps {
     onSwitchToSignIn: () => void;
 }
 
+const SignUpBox = (props: IProps) => {
 
-const SignUpForm = (props: IProps) => {
+
     function switchToSignIn () {
         props.onSwitchToSignIn();
     }
@@ -26,6 +27,8 @@ const SignUpForm = (props: IProps) => {
                     <a href="#" className="social"><FontAwesomeIcon icon={faApple} /></a>
                 </div>
                 <span>or use your email address for registration</span>
+                <input type={"text"} placeholder={"First name"} />
+                <input type={"text"} placeholder={"Last name"} />
                 <input type="email" placeholder="Email"/>
                 <input type="password" placeholder="Password"/>
                 <a href="#" onClick={switchToSignIn}>Already have an account? Sign in here!</a>
@@ -35,4 +38,4 @@ const SignUpForm = (props: IProps) => {
     )
 }
 
-export default SignUpForm;
+export default SignUpBox;
